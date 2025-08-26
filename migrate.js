@@ -2,6 +2,7 @@
 // Run this script after setting up MongoDB Atlas connection
 
 const mongoose = require('mongoose');
+require('dotenv').config();
 const User = require('./models/User');
 const Service = require('./models/Service');
 const Appointment = require('./models/Appointment');
