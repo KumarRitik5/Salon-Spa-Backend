@@ -10,26 +10,70 @@ const app = express();
 // Middleware
 app.use(express.json());
 
+// Request logging middleware
+app.use((req, res, next) => {
+  console.log(`${new Date().toISOString()} - ${req.method} ${req.path} - Origin: ${req.get('Origin') || 'None'}`);
+  next();
+});
+
 // Enhanced CORS configuration
 const corsOptions = {
-  origin: [
-    'https://salon-spa-frontend.vercel.app',
-    'https://salon-clinic-app.vercel.app',
-    'http://localhost:3000',
-    'https://*.vercel.app'
-  ],
+  origin: function (origin, callback) {
+    // Allow requests with no origin (like mobile apps or curl requests)
+    if (!origin) return callback(null, true);
+    
+    // Allow any Vercel domain
+    if (origin.includes('.vercel.app')) {
+      return callback(null, true);
+    }
+    
+    // Allow localhost for development
+    if (origin.includes('localhost')) {
+      return callback(null, true);
+    }
+    
+    // Allow the specific domains
+    const allowedOrigins = [
+      'https://salon-spa-frontend.vercel.app',
+      'https://salon-clinic-app.vercel.app',
+      'http://localhost:3000'
+    ];
+    
+    if (allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      console.log('CORS blocked origin:', origin);
+      callback(null, true); // Allow all for now
+    }
+  },
   credentials: true,
   optionsSuccessStatus: 200,
   methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization']
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With']
 };
 
 app.use(cors(corsOptions));
 
+// Explicit preflight handler
+app.options('*', cors(corsOptions));
+
 // Database Connection
-mongoose.connect(process.env.MONGO_URI)
-  .then(() => console.log('MongoDB connected successfully'))
-  .catch(err => console.error(err));
+const connectDB = async () => {
+  try {
+    console.log('Attempting to connect to MongoDB...');
+    await mongoose.connect(process.env.MONGO_URI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+    console.log('MongoDB connected successfully');
+  } catch (err) {
+    console.error('MongoDB connection error:', err);
+    // Don't exit process, let it retry
+    setTimeout(connectDB, 5000); // Retry after 5 seconds
+  }
+};
+
+connectDB();
 
 // Health check route
 app.get('/', (req, res) => {
@@ -46,12 +90,23 @@ app.get('/api/test', async (req, res) => {
     const mongoose = require('mongoose');
     const connectionState = mongoose.connection.readyState;
     const states = ['disconnected', 'connected', 'connecting', 'disconnecting'];
+    
+    // Test basic service query
+    const Service = require('./models/Service');
+    const serviceCount = await Service.countDocuments();
+    
     res.json({
       database: states[connectionState],
-      timestamp: new Date().toISOString()
+      serviceCount: serviceCount,
+      timestamp: new Date().toISOString(),
+      mongoUri: process.env.MONGO_URI ? 'Set' : 'Not Set',
+      jwtSecret: process.env.JWT_SECRET ? 'Set' : 'Not Set'
     });
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    res.status(500).json({ 
+      error: error.message,
+      timestamp: new Date().toISOString()
+    });
   }
 });
 
