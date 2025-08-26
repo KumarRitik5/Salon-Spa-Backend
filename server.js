@@ -16,6 +16,11 @@ mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log('MongoDB connected successfully'))
   .catch(err => console.error(err));
 
+// Health check route
+app.get('/', (req, res) => {
+  res.json({ message: 'Salon Clinic Backend API is running!' });
+});
+
 // API Routes
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/services', require('./routes/services'));
