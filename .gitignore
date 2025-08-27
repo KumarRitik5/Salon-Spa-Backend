@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Dependencies
 node_modules/
 npm-debug.log*
@@ -55,3 +56,9 @@ jspm_packages/
 Thumbs.db
 ehthumbs.db
 Desktop.ini
+=======
+/.env
+/node_modules
+
+
+>>>>>>> 3bd369977e00f756fefc9e2e3973336e3771e2d3

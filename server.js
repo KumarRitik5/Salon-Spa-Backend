@@ -56,4 +56,9 @@ app.use((err, req, res, next) => {
 });
 
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+  console.log('Environment:', process.env.NODE_ENV);
+  console.log('MongoDB URI configured:', !!process.env.MONGO_URI);
+  console.log('JWT Secret configured:', !!process.env.JWT_SECRET);
+});

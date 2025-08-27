@@ -9,10 +9,16 @@ const router = express.Router();
 // @access  Public
 router.get('/', async (req, res) => {
   try {
+    console.log('Fetching services from database...');
     const services = await Service.find();
+    console.log(`Found ${services.length} services`);
     res.json(services);
   } catch (err) {
-    res.status(500).json({ message: 'Server error' });
+    console.error('Error fetching services:', err);
+    res.status(500).json({ 
+      message: 'Server error while fetching services',
+      error: err.message 
+    });
   }
 });
 

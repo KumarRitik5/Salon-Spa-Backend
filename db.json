@@ -9,7 +9,17 @@
       "createdAt": "2025-08-22T00:00:00.000Z"
     },
     {
-      "id": "1r07k2f7",
+      "id": "a334",
+      "name": "Ritik Kumar",
+      "email": "ritikkumar12bicbly@gmail.com",
+      "password": "asdfghjkl",
+      "phone": "09808470386",
+      "role": "user",
+      "createdAt": "2025-08-25T01:26:41.260Z",
+      "active": false
+    },
+    {
+      "id": "1737",
       "name": "Ritik Kumar",
       "email": "Ritikkumar12bicbly@gmail.com",
       "password": "Ritik@123",
@@ -93,6 +103,11 @@
       "createdAt": "2025-08-25T17:24:16.319Z",
       "bookedAt": "2025-08-25T17:24:16.319Z",
       "paymentStatus": "paid"
+      "slot": "01:10 PM - 01:35 PM",
+      "status": "confirmed",
+      "createdAt": "2025-08-25T17:24:16.319Z",
+      "bookedAt": "2025-08-25T17:24:16.319Z",
+      "paymentStatus": "paid"
     },
     {
       "id": "0eca",
@@ -132,6 +147,13 @@
       "date": "2025-08-26",
       "slot": "09:50 AM - 10:15 AM",
       "status": "completed",
+      "createdAt": "2025-08-26T04:15:27.152Z",
+      "bookedAt": "2025-08-26T04:15:27.152Z",
+      "paymentStatus": "paid",
+      "price": 100,
+      "date": "2025-08-26",
+      "slot": "09:50 AM - 10:15 AM",
+      "status": "confirmed",
       "createdAt": "2025-08-26T04:15:27.152Z",
       "bookedAt": "2025-08-26T04:15:27.152Z",
       "paymentStatus": "paid"
