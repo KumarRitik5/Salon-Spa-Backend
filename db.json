@@ -9,41 +9,31 @@
       "createdAt": "2025-08-22T00:00:00.000Z"
     },
     {
-      "id": "a334",
-      "name": "Ritik Kumar",
-      "email": "ritikkumar12bicbly@gmail.com",
-      "password": "asdfghjkl",
-      "phone": "09808470386",
-      "role": "user",
-      "createdAt": "2025-08-25T01:26:41.260Z",
-      "active": false
-    },
-    {
-      "id": "1737",
+      "id": "1r07k2f7",
       "name": "Ritik Kumar",
       "email": "Ritikkumar12bicbly@gmail.com",
-      "password": "9808470386",
+      "password": "Ritik@123",
       "phone": "9808470386",
       "role": "owner",
-      "createdAt": "2025-08-25T01:42:59.012Z"
+      "createdAt": "2025-08-25T05:55:43.627Z"
     },
     {
-      "id": "44a6",
-      "name": "Pushpa",
-      "email": "pushpa@gmail.com",
-      "password": "asdfghjkl",
-      "phone": "7599949766",
+      "id": "xfygi80h",
+      "name": "Ritik Kumar",
+      "email": "ritikkumar12bicbly@gmail.com",
+      "password": "Ritik@123",
+      "phone": "9808470386",
       "role": "user",
-      "createdAt": "2025-08-25T01:59:41.700Z"
+      "createdAt": "2025-08-25T16:47:01.398Z"
     },
     {
-      "id": "c950",
-      "name": "Vighnesh Shukla",
-      "email": "vighnesh@gmai.com",
-      "password": "asdfghjkl",
-      "phone": "7518929964",
+      "id": "uuy9thcf",
+      "name": "Rohit Pal",
+      "email": "rohit@gmail.com",
+      "password": "Rohit@123",
+      "phone": "9808470386",
       "role": "user",
-      "createdAt": "2025-08-25T04:52:58.041Z"
+      "createdAt": "2025-08-26T04:14:22.751Z"
     }
   ],
   "services": [
@@ -71,7 +61,7 @@
     {
       "id": "4",
       "name": "Full Body Massage",
-      "price": 600,
+      "price": 1600,
       "duration": 90,
       "description": "Relaxing full body massage"
     },
@@ -92,106 +82,59 @@
   ],
   "appointments": [
     {
-      "id": "504b",
-      "userId": "a334",
+      "id": "18eb",
+      "userId": "xfygi80h",
       "serviceId": "1",
       "serviceName": "Haircut & Styling",
-      "price": 70,
-      "date": "2025-08-25",
-      "slot": "09:00 AM - 10:00 AM",
-      "status": "completed",
-      "createdAt": "2025-08-25T01:32:42.451Z",
-      "feedback": "very good\n",
-      "stars": 5
-    },
-    {
-      "id": "e246",
-      "userId": "a334",
-      "serviceId": "2",
-      "serviceName": "Manicure",
-      "price": 190,
+      "price": 100,
       "date": "2025-08-26",
-      "slot": "11:00 AM - 12:00 PM",
+      "slot": "01:10 PM - 01:35 PM",
       "status": "completed",
-      "createdAt": "2025-08-25T01:38:28.110Z",
-      "feedback": "very good services",
-      "stars": 5
+      "createdAt": "2025-08-25T17:24:16.319Z",
+      "bookedAt": "2025-08-25T17:24:16.319Z",
+      "paymentStatus": "paid"
     },
     {
-      "id": "0711",
-      "userId": "a334",
-      "serviceId": "2",
-      "serviceName": "Manicure",
-      "price": 190,
-      "date": "2025-08-26",
-      "slot": "12:00 PM - 01:00 PM",
-      "status": "completed",
-      "createdAt": "2025-08-25T01:43:51.582Z",
-      "feedback": "asjklkhdsa\n",
-      "stars": 5
-    },
-    {
-      "id": "b807",
-      "userId": "44a6",
-      "serviceId": "2",
-      "serviceName": "Manicure",
-      "price": 190,
-      "date": "2025-08-26",
-      "slot": "10:00 AM - 11:00 AM",
-      "status": "completed",
-      "createdAt": "2025-08-25T02:00:08.089Z",
-      "feedback": "very good services\n",
-      "stars": 5
-    },
-    {
-      "id": "c2a9",
-      "userId": "44a6",
+      "id": "0eca",
+      "userId": "xfygi80h",
       "serviceId": "1",
       "serviceName": "Haircut & Styling",
-      "price": 70,
-      "date": "2025-08-27",
-      "slot": "04:00 PM - 05:00 PM",
-      "status": "completed",
-      "createdAt": "2025-08-25T02:10:30.568Z",
-      "feedback": "Good Services at this price point\n",
-      "stars": 5
-    },
-    {
-      "id": "3812",
-      "userId": null,
-      "serviceId": "9cb6",
-      "serviceName": "Padicure",
-      "price": 650,
-      "date": "2025-08-27",
-      "slot": "12:00 PM - 01:00 PM",
+      "price": 100,
+      "date": "2025-08-26",
+      "slot": "12:45 PM - 01:10 PM",
       "status": "cancelled",
-      "createdAt": "2025-08-25T04:17:25.970Z"
+      "createdAt": "2025-08-25T17:29:37.604Z",
+      "bookedAt": "2025-08-25T17:29:37.604Z",
+      "paymentStatus": "paid",
+      "cancellationReason": "asdfghjkl"
     },
     {
-      "id": "2d2e",
-      "userId": null,
-      "serviceId": "e156",
-      "serviceName": "Therapy",
-      "price": 2000,
-      "date": "2025-08-27",
-      "slot": "12:00 PM - 01:00 PM",
-      "status": "completed",
-      "createdAt": "2025-08-25T04:21:03.323Z",
-      "feedback": "very good\n",
-      "stars": 5
+      "id": "9792",
+      "userId": "xfygi80h",
+      "serviceId": "3",
+      "serviceName": "Facial Treatment",
+      "price": 300,
+      "date": "2025-08-26",
+      "slot": "02:00 PM - 03:00 PM",
+      "status": "cancelled",
+      "createdAt": "2025-08-25T17:34:02.791Z",
+      "bookedAt": "2025-08-25T17:34:02.791Z",
+      "paymentStatus": "paid",
+      "cancellationReason": "aghjkl",
+      "refundStatus": "refunded"
     },
     {
-      "id": "5ddf",
-      "userId": "a334",
-      "serviceId": "2",
-      "serviceName": "Manicure",
-      "price": 190,
-      "date": "2025-08-25",
-      "slot": "12:00 PM - 01:00 PM",
+      "id": "ab87",
+      "userId": "uuy9thcf",
+      "serviceId": "1",
+      "serviceName": "Haircut & Styling",
+      "price": 100,
+      "date": "2025-08-26",
+      "slot": "09:50 AM - 10:15 AM",
       "status": "completed",
-      "createdAt": "2025-08-25T04:30:48.496Z",
-      "feedback": "Very Good Service",
-      "stars": 5
+      "createdAt": "2025-08-26T04:15:27.152Z",
+      "bookedAt": "2025-08-26T04:15:27.152Z",
+      "paymentStatus": "paid"
     }
   ]
 }
