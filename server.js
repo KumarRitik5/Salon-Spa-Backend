@@ -16,46 +16,17 @@ app.use((req, res, next) => {
   next();
 });
 
-// Enhanced CORS configuration
-const corsOptions = {
-  origin: function (origin, callback) {
-    // Allow requests with no origin (like mobile apps or curl requests)
-    if (!origin) return callback(null, true);
-    
-    // Allow any Vercel domain
-    if (origin.includes('.vercel.app')) {
-      return callback(null, true);
-    }
-    
-    // Allow localhost for development
-    if (origin.includes('localhost')) {
-      return callback(null, true);
-    }
-    
-    // Allow the specific domains
-    const allowedOrigins = [
-      'https://salon-spa-frontend.vercel.app',
-      'https://salon-clinic-app.vercel.app',
-      'http://localhost:3000'
-    ];
-    
-    if (allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      console.log('CORS blocked origin:', origin);
-      callback(null, true); // Allow all for now
-    }
-  },
+// Enhanced CORS configuration - Completely open for debugging
+app.use(cors({
+  origin: true, // Allow all origins
   credentials: true,
   optionsSuccessStatus: 200,
   methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With']
-};
-
-app.use(cors(corsOptions));
+}));
 
 // Explicit preflight handler
-app.options('*', cors(corsOptions));
+app.options('*', cors());
 
 // Database Connection
 const connectDB = async () => {
@@ -80,7 +51,18 @@ app.get('/', (req, res) => {
   res.json({ 
     message: 'Salon Clinic Backend API is running!',
     timestamp: new Date().toISOString(),
-    environment: process.env.NODE_ENV || 'development'
+    environment: process.env.NODE_ENV || 'development',
+    port: process.env.PORT || 5000
+  });
+});
+
+// Configuration check route
+app.get('/api/config', (req, res) => {
+  res.json({
+    mongoConfigured: !!process.env.MONGO_URI,
+    jwtConfigured: !!process.env.JWT_SECRET,
+    environment: process.env.NODE_ENV || 'development',
+    timestamp: new Date().toISOString()
   });
 });
 
@@ -131,4 +113,9 @@ app.use((req, res) => {
 });
 
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+  console.log('Environment:', process.env.NODE_ENV);
+  console.log('MongoDB URI configured:', !!process.env.MONGO_URI);
+  console.log('JWT Secret configured:', !!process.env.JWT_SECRET);
+});
